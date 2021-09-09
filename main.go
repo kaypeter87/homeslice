@@ -24,11 +24,20 @@ func main() {
         }
 }
 
+// Placeholder functions for later
 func createDotfile(path string) *os.File {
     fmt.Println("Creating dotfile...")
     f, err := os.Create(path)
     if err != nil {
-        panic(err)
+        log.Fatal(err)
     }
     return f
+}
+
+func parseDotfile(path string) {
+    fmt.Println("Parsing dotfile...")
+}
+
+func storeDotfile(path string) {
+    fmt.Println("Saving dotfile...")
 }
