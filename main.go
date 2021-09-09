@@ -11,6 +11,8 @@ import (
 var homeslice = cli.NewApp()
 
 func main() {
+    info()
+    commands()
     err := homeslice.Run(os.Args)
         if err != nil {
             log.Fatal(err)
@@ -45,4 +47,19 @@ func info() {
         },
     }
     homeslice.Version = "1.0.0"
+}
+
+func commands() {
+    homeslice.Commands = []*cli.Command{
+        &cli.Command{
+            Name:    "test",
+            Aliases: []string{"t"},
+            Usage:   "Test command",
+            Action:  func(c *cli.Context) error {
+                t := "This is a test command."
+                fmt.Println(t)
+                return nil
+            },
+        },
+    }
 }
