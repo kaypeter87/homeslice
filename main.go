@@ -8,16 +8,9 @@ import (
     "github.com/urfave/cli/v2"
 ) 
 
-func main() {
-    homeslice := &cli.App{
-        Name: "homeslice",
-        Usage: "A CLI tool that manages your dotfiles with finesse.",
-        Action: func(c *cli.Context) error {
-            fmt.Println("I am still a baby!")
-            return nil
-        },
-    }
+var homeslice = cli.NewApp()
 
+func main() {
     err := homeslice.Run(os.Args)
         if err != nil {
             log.Fatal(err)
@@ -40,4 +33,16 @@ func parseDotfile(path string) {
 
 func storeDotfile(path string) {
     fmt.Println("Saving dotfile...")
+}
+
+func info() {
+    homeslice.Name = "homeslice"
+    homeslice.Usage = "A CLI tool and dotfile manager that organizes your dotfiles."
+    homeslice.Authors = []*cli.Author{
+        &cli.Author{
+            Name: "kaypeter87 (Peter Kay)", 
+            Email: "contact@kaypeter.com",
+        },
+    }
+    homeslice.Version = "1.0.0"
 }
