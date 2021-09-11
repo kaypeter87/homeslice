@@ -26,6 +26,7 @@ func createDotfile(path string) *os.File {
     if err != nil {
         log.Fatal(err)
     }
+    defer f.Close()
     return f
 }
 
@@ -68,6 +69,15 @@ func commands() {
            Action:   func(c *cli.Context) error {
                s := "This is a Slice command."
                fmt.Println(s)
+               return nil
+           },
+       },
+       &cli.Command{
+           Name:     "dotcreate",
+           Aliases:  []string{"dc"},
+           Usage:    "Create a dotfile at a given location.",
+           Action:   func(c *cli.Context) error {
+               createDotfile(".dottestfile")
                return nil
            },
        },
