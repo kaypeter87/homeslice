@@ -61,5 +61,15 @@ func commands() {
                 return nil
             },
         },
+       &cli.Command{
+           Name:     "slice",
+           Aliases:  []string{"sl"},
+           Usage:    "Slice it",
+           Action:   func(c *cli.Context) error {
+               s := "This is a Slice command."
+               fmt.Println(s)
+               return nil
+           },
+       },
     }
 }
